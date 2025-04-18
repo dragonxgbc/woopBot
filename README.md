@@ -1,2 +1,2 @@
 # woopBot
- wikipedia wrapper + other integrations
+ uses a wikipedia wrapper + other integrations

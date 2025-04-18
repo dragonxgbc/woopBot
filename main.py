@@ -5,7 +5,6 @@ import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
-# change the id based on the application id of your bot in the portal
 bot = commands.Bot(command_prefix='!', intents=intents,
                    application_id='1029161693625991175')
 
@@ -19,15 +18,20 @@ async def load():
     bot.remove_command('help')
     for file in os.listdir('./cogs'):
         if file.endswith('.py'):
-            await bot.load_extension(f'cogs.{file[:-3]}')
+            cog_name = f'cogs.{file[:-3]}'
+            try:
+                await bot.load_extension(cog_name)
+                print(f"Loaded cog: {cog_name}")
+            except Exception as e:
+                print(f"Failed to load cog: {cog_name} | {e}")
 
 
 async def main():
     await load()
-    # insert bot token. will most likely use config file for this one later down the line
-    await bot.start("")
-
-
+    # Load token from token.txt
+    with open("token.txt", "r") as token_file:
+        token = token_file.read().strip()
+    await bot.start(token)
 
 asyncio.run(main())
 
