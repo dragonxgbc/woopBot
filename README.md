@@ -11,7 +11,9 @@
  make sure to give it authorizations in administrator and applications.commands
 
  pull this code, and put your own application id & token in a file called '.env' for safety
+ 
  APPLICATION ID = 
+ 
  DISCORD_TOKEN =
 
  install these two libraries:
