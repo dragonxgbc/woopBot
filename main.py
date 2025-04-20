@@ -1,7 +1,11 @@
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
 import os
 import asyncio
+
+# Load environment variables from .env file
+load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -28,9 +32,10 @@ async def load():
 
 async def main():
     await load()
-    # Load token from token.txt
-    with open("token.txt", "r") as token_file:
-        token = token_file.read().strip()
+    # Load token from .env
+    token = os.getenv("DISCORD_TOKEN")
+    if not token:
+        raise ValueError("DISCORD_TOKEN is not set in the .env file")
     await bot.start(token)
 
 asyncio.run(main())
