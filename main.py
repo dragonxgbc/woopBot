@@ -9,8 +9,11 @@ load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents,
-                   application_id='1029161693625991175')
+application_id = os.getenv("APPLICATION_ID")
+if not application_id:
+    raise ValueError("APPLICATION_ID is not set in the .env file")
+
+bot = commands.Bot(command_prefix='!', intents=intents, application_id=application_id)
 
 
 @bot.event
@@ -32,7 +35,6 @@ async def load():
 
 async def main():
     await load()
-    # Load token from .env
     token = os.getenv("DISCORD_TOKEN")
     if not token:
         raise ValueError("DISCORD_TOKEN is not set in the .env file")
@@ -40,18 +42,20 @@ async def main():
 
 asyncio.run(main())
 
+# done:
+# added slash commands
+# finished search command
+# finished help command
+
 # to do:
-# turn commands into slash command variation (DONE)
-# display a link after searching (DONE)
-# maybe search output to being an embed - reason: can take up to 6000 characters collectively instead of just 2k in a normal discord message, 4k limit fix this lol
-# replace the !help command to display parameter inputs, easier for user (DONE)
-# use cogs, clean up code (DONE)
 # work on potential edge cases that pop up
 # weather searching functionality
 # datetime / timezone checker
-# potentially a google search
-# potentially a youtube search
-# potentially a github search
-# potentially a spotify search
-# potentially a twitch search
-# potentially bard bot functionality
+
+# optional:
+# a google search
+# a youtube search
+# a github search
+# a spotify search
+# a twitch search
+# ai integration

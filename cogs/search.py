@@ -21,7 +21,7 @@ class WikiPaginationView(discord.ui.View):
             url=self.url,
             description=self.pages[self.current_page]
         )
-        # Footer now only shows page info
+        # Footer shows page info
         footer = f"Page {self.current_page + 1}/{len(self.pages)}"
         embed.set_footer(text=footer)
         return embed
@@ -40,18 +40,18 @@ class WikiPaginationView(discord.ui.View):
 
 
 def split_summary(summary: str, limit: int = 4096) -> list[str]:
-    if "\n" not in summary:
-        return [summary]
+    if "\n" not in summary: # no newlines, no need to split
+        return [summary] # return as a single page
 
-    paragraphs = summary.split("\n")
-    pages: list[str] = []
-    current: list[str] = []
-    for para in paragraphs:
-        cand = "\n".join(current + [para])
-        if len(cand) > limit:
-            if current:
-                pages.append("\n".join(current))
-                current = [para]
+    paragraphs = summary.split("\n") # split by newlines
+    pages: list[str] = [] # list to hold pages
+    current: list[str] = [] # current page content
+    for para in paragraphs: # iterate over paragraphs
+        cand = "\n".join(current + [para]) # combine current and new paragraph
+        if len(cand) > limit: # if combined length exceeds limit
+            if current: # if current is not empty
+                pages.append("\n".join(current)) # add current to pages
+                current = [para] # reset current to new paragraph
             else:
                 # chunk long paragraph
                 while len(para) > limit:
