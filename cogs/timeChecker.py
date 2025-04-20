@@ -72,12 +72,17 @@ class TimeCog(commands.Cog):
         view = TimePaginationView(pages)
         await send_func(embed=view.create_embed(), view=view)
 
-    @commands.command(name="time")
-    async def time_command(self, ctx: commands.Context):
+    @commands.command(name="checktime")
+    async def checktime_command(self, ctx: commands.Context):
+        """Prefix command: show paginated time embed"""
         await self._send_paginated(ctx.send)
 
-    @discord.app_commands.command(name="time", description="Check current date & time split by US/International zones")
-    async def time_slash(self, interaction: discord.Interaction):
+    @discord.app_commands.command(
+        name="checktime",
+        description="Check current date & time split by US/International zones"
+    )
+    async def checktime(self, interaction: discord.Interaction):
+        """Slash command: show paginated time embed"""
         await self._send_paginated(interaction.response.send_message)
 
 async def setup(bot: commands.Bot):
