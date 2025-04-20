@@ -15,11 +15,19 @@ class HelpCog(commands.Cog):
         embed.add_field(
             name="search",
             value=(
-                "Search Wikipedia by title. "
+                "Search Wikipedia by title.\n"
                 "Usage: `!search <query>` or `/search <query>`\n\n"
-                "This command fetches the Wikipedia summary for the given query. "
-                "If the summary exceeds 4096 characters, it's split into multiple pages "
-                "with navigation buttons."
+                "Fetches the Wikipedia summary for the given query. If the summary exceeds 4096 characters, "
+                "it will be split into multiple pages with navigation buttons."
+            ),
+            inline=False
+        )
+        embed.add_field(
+            name="time",
+            value=(
+                "Check the current date & time in major timezones.\n"
+                "Usage: `!time` or `/time`\n\n"
+                "Displays the current date and time in both 24-hour and 12-hour (AM/PM) formats for key timezones."
             ),
             inline=False
         )
@@ -35,11 +43,19 @@ class HelpCog(commands.Cog):
         embed.add_field(
             name="search",
             value=(
-                "Search Wikipedia by title. "
+                "Search Wikipedia by title.\n"
                 "Usage: `/search <query>`\n\n"
-                "This command fetches the Wikipedia summary for the given query. "
-                "If the summary exceeds 4096 characters, it is split into multiple pages "
-                "with navigation buttons."
+                "Fetches the Wikipedia summary for the given query. If the summary exceeds 4096 characters, "
+                "it will be split into multiple pages with navigation buttons."
+            ),
+            inline=False
+        )
+        embed.add_field(
+            name="time",
+            value=(
+                "Check the current date & time in major timezones.\n"
+                "Usage: `/time`\n\n"
+                "Displays the current date and time in both 24-hour and 12-hour (AM/PM) formats for key timezones."
             ),
             inline=False
         )

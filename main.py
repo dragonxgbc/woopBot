@@ -46,11 +46,11 @@ asyncio.run(main())
 # added slash commands
 # finished search command
 # finished help command
+# finished time command
 
 # to do:
 # work on potential edge cases that pop up
 # weather searching functionality
-# datetime / timezone checker
 
 # optional:
 # a google search
