@@ -22,6 +22,11 @@
  
  pip install wikipedia
 
+ pip install tzdata
+
+ pip install dotenv
+
+
  run it
     
 
